@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <!-- new product link -->
+    <a href="/">Back to products</a>
+    <!-- title -->
+    <h1><%=product.name%></h1>
+    <!-- product container -->
+    <div class="container">
+      <div class="show-container">
+        <div class="data-container">
+          <img src="<%=product.img%>" alt="<%=product.name%>" />
+          
+          <form action="/<%=product._id%>?_method=PUT" method="post">
+            <div>
+              <label for="description"> Description: </label>
+              <textarea rows="4" cols="25" name="description" value=""><%=product.description%></textarea>
+            </div>
+            <div>
+              <label for="price">Price: </label>
+              <input type="text" name="price" id="price" value="<%=product.price%>">
+            </div>
+            <div>
+              <label for="quantity">Quantity: </label>
+              <input type="text" name="qty" id="qty" value="<%=product.qty%>">
+            </div>
+          <input type="submit" value="Update Product">
+        </form>
+        </div>
+      </div>
+    </div>
+    <a href="/<%=product._id%> ">
+      <button class="delete-btn">cancel</button>
+    </a>
+  </body>
+</html>

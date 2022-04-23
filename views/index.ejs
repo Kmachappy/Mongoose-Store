@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<%- include("./partials/head.ejs") %> 
+
+<body>
+    <!-- new product link -->
+    <a href="/new">Add a new product</a>
+    <!-- title -->
+    <h1>Shop</h1>
+    <!-- allProducts container -->
+    <div class="container">
+        <!-- Producst loop -->
+        <% Products.forEach((product,index) =>{ %>
+            <!-- Product container -->
+            <a class="product-container" href="/<%=product._id%>">
+                <!-- data container -->
+                <div class="data-container">
+                    <!-- product name -->
+                    <h3><%=product.name%></h3>
+                    <!-- product image -->
+                    <img src="<%=product.img%>" alt="<%=product.name%>">
+                    <!-- price -->
+                    <h5>Price: <%=product.price%></h5>
+                
+                </div> 
+            </a>
+
+
+
+        <% }) %> 
+
+
+    </div>
+
+
+</body>
+</html>

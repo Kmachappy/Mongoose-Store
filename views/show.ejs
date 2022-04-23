@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <!-- new product link -->
+    <a href="/">Back to products</a>
+    <!-- title -->
+    <h1><%=product.name%></h1>
+    <!-- product container -->
+    <div class="container">
+      <div class="show-container">
+        <div class="data-container">
+          <img src="<%=product.img%>" alt="<%=product.name%>" />
+          <p><%=product.description %></p>
+          <p>PRICE: $<%=product.price%></p>
+          <h3 class="remaining"><%=product.qty%> remaining</h3>
+       
+          <% if(product.qty > 0){ %>
+            <form action="/<%=product._id%>?_method=PUT" method="POST">
+              <button class="buy-btn" type="submit" name="qty" value="<%=product.qty-1%>">BUY</button>
+            </form> <br>
+
+
+          <% }else{ %>
+            <h3>OUT OF STOCK</h3>
+          <% } %>  
+          <a href="/<%=product._id%>/edit">Edit this product</a>
+          
+        </div>
+      </div>
+    </div>
+    <form action="/<%=product._id%>?_method=DELETE" method="POST">
+      <input class="delete-btn" type="submit" value="DELETE" />
+    </form>
+  </body>
+</html>
